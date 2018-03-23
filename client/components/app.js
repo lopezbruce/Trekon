@@ -9,8 +9,20 @@ export default () => {
   return (
     <div>
       <Header />
-      <ServerCreate />
-      <ServerList />
+      <div class="row">
+        <div class="column side">
+        hi
+        </div>
+
+        <div class="column middle">
+        <ServerCreate />
+        <ServerList />
+        </div>
+
+        <div class="column side">
+        hi right
+        </div>
+      </div>
     </div>
   );
 };
