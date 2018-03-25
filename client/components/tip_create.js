@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ServerCreate extends Component {
+class TipCreate extends Component {
   constructor(props) {
     super(props);
 
@@ -12,7 +12,7 @@ class ServerCreate extends Component {
 
     Meteor.call('servers.insert', this.refs.server.value, (error) => {
       if (error) {
-        this.setState({ error: 'Enter a valid name!' });
+        this.setState({ error: 'Enter a valid number!' });
       } else {
         this.setState({ error: '' });
         this.refs.server.value = '';
@@ -28,10 +28,10 @@ class ServerCreate extends Component {
           <input ref="server" className="form-control" />
         </div>
         <div className="text-danger">{this.state.error}</div>
-        <button className="btn btn-primary">Add!</button>
+        <button className="btn btn-primary">Add Tip!</button>
       </form>
     );
   }
 }
 
-export default ServerCreate;
+export default TipCreate;

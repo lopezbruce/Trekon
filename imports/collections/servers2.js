@@ -13,6 +13,34 @@ Meteor.methods({
     const token = Math.random().toString(36).slice(-5);
     Servers.insert({ name, token, tips: 0 });
   },
+
+  'tips.insert': function() {
+    return Tips.insert({
+      createdAt: new Date(),
+      tip: 0,
+      ownerId: this.servers.token
+    });
+  },
+
+  'tips.remove': function(tip) {
+    return Tips.remove(tip);
+  },
+
+  'tips.update': function(bin, content) {
+    return Tips.update(tip._id, { $set: { tip } });
+  },
+
+  'servers.insert': function (tips) {
+    check(name, Match.Where((name) => {
+    check(name, String);
+    return name.length > 0;
+  }));
+    //const randomTip = 25;
+    //var tips = Math.floor(Math.random() * Math.floor(randomTip));
+    const token = Math.random().toString(36).slice(-5);
+    Servers.insert({ tips,  });
+  },
+
   'servers.remove': function(server) {
     return Servers.remove(server);
   },

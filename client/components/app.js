@@ -8,18 +8,20 @@ import ServerList from './server_list';
 export default () => {
   return (
     <div>
-      <Header />
+      <div class="header bar">
+        <Header />
+      </div>
       <div class="row">
-        <div class="column side">
+        <div class="column left side">
         hi
         </div>
 
         <div class="column middle">
-        <ServerCreate />
         <ServerList />
+        <ServerCreate />
         </div>
 
-        <div class="column side">
+        <div class="column right side">
         hi right
         </div>
       </div>

@@ -13,7 +13,7 @@ class Header extends Component {
             <Accounts />
           </li>
           <li>
-            <a>Create Bin</a>
+            
           </li>
         </ul>
       </nav>
