@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Servers } from '../../imports/collections/servers';
+//import QuickAdd from './quick_add';
+
+//import { Tips } from '../../imports/collections/tips';
 
 class ServerList extends Component {
   onServerRemove(server) {
@@ -20,7 +23,7 @@ class ServerList extends Component {
     Meteor.call('servers.update4', server);
   }
   handleTipClick100(server) {
-    Meteor.call('servers.update4', server);
+    Meteor.call('servers.update5', server);
   }
 
 
@@ -37,10 +40,35 @@ class ServerList extends Component {
             {token}
           </td>
           <td>
-            <a onClick={() => this.handleTipClick1(server)}>${tips}</a>
-          </td>
-          <td>
-            <a onClick={() => this.handleTipClick5(server)}>${tips}</a>
+          <a data-toggle="modal" data-target="#exampleModalCenter">
+            ${tips}
+          </a>
+
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h3 class="modal-title" id="exampleModalLongTitle">{name}</h3>
+                </div>
+                <div class="modal-body">
+                  <h1 class="center">${tips}</h1>
+                </div>
+                <div class="modal-footer">
+                <div class="center">
+                  <button type="button" class="btn btn-primary"onClick={() => this.handleTipClick1(server)}>Add 1</button>
+                  <button type="button" class="btn btn-primary"onClick={() => this.handleTipClick5(server)}>Add 5</button>
+                  <button type="button" class="btn btn-primary"onClick={() => this.handleTipClick10(server)}>Add 10</button>
+                  <button type="button" class="btn btn-primary"onClick={() => this.handleTipClick20(server)}>Add 20</button>
+                  <button type="button" class="btn btn-primary"onClick={() => this.handleTipClick100(server)}>Add 100</button>
+                </div>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
           </td>
           <td>
           <span className="pull-right">

@@ -13,7 +13,7 @@ export default () => {
       </div>
       <div class="row">
         <div class="column left side">
-        hi
+        Hi left
         </div>
 
         <div class="column middle">

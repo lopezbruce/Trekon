@@ -8,10 +8,10 @@ Meteor.methods({
     check(name, String);
     return name.length > 0;
   }));
-    //const randomTip = 25;
-    //var tips = Math.floor(Math.random() * Math.floor(randomTip));
+    const randomTip = 100;
+    var tips = Math.floor(Math.random() * Math.floor(randomTip));
     const token = Math.random().toString(36).slice(-5);
-    Servers.insert({ name, token, tips: 0 });
+    Servers.insert({ name, token, tips: tips });
   },
   'servers.remove': function(server) {
     return Servers.remove(server);
