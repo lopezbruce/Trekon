@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Servers } from '../../imports/collections/servers';
-import QuickList from './random';
 
 //import { Tips } from '../../imports/collections/tips';
 
-class ServerList extends Component {
-  onServerRemove(server) {
-    Meteor.call('servers.remove', server);
-  }
+class QuickList extends Component {
 
   handleTipClick1(server) {
     Meteor.call('servers.update', server);
@@ -31,15 +27,8 @@ class ServerList extends Component {
       const { name, token, tips} = server;
 
       return (
-        <tr key={token}>
           <td>
-            <a>{name}</a>
-          </td>
-          <td>
-            {token}
-          </td>
-          <td>
-          <a data-toggle="modal" data-target="#exampleModalCenter" key={token}>
+          <a data-toggle="modal" data-target="#exampleModalCenter">
             ${tips}
           </a>
 
@@ -69,34 +58,15 @@ class ServerList extends Component {
             </div>
           </div>
           </td>
-          <td>
-          <span className="pull-right">
-            <button
-              className="btn btn-danger"
-              onClick={() => this.onServerRemove(server)}>
-              Remove
-            </button>
-            </span>
-          </td>
-        </tr>
       );
     });
   }
 
   render() {
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Server ID</th>
-            <th>Tip</th>
-          </tr>
-        </thead>
-        <tbody>
+        <div>
           {this.renderRows()}
-        </tbody>
-      </table>
+      </div>
     );
   }
 }
@@ -105,4 +75,4 @@ export default withTracker(() => {
   Meteor.subscribe('servers');
 
   return { servers: Servers.find({}).fetch() };
-}) (ServerList);
+}) (QuickList);

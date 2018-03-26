@@ -6,25 +6,26 @@ import { Servers } from '../../imports/collections/servers';
 import ServerList from './server_list';
 
 import LeftSide from './leftside';
+import RightSide from './rightside';
 
 export default () => {
   return (
     <div>
-      <div class="header bar">
+      <div className="header bar">
         <Header />
       </div>
-      <div class="row">
-        <div class="column left side">
+      <div className="row">
+        <div className="column left side">
         <LeftSide />
         </div>
 
-        <div class="column middle">
+        <div className="column middle">
         <ServerList />
         <ServerCreate />
         </div>
 
-        <div class="column right side">
-        hi right
+        <div className="column right side">
+        <RightSide />
         </div>
       </div>
     </div>

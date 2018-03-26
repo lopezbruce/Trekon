@@ -50,6 +50,7 @@
   position: fixed;
   height: inherit;
   width: 100%;
+   z-index: 1000;
 }
 
 .center{
