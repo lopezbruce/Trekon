@@ -10,7 +10,7 @@ import RightSide from './rightside';
 
 export default () => {
   return (
-    <div>
+    <div className="AppWidth">
       <div className="header bar">
         <Header />
       </div>

@@ -16,7 +16,6 @@
 /* Create three unequal columns that sits next to each other */
 .column {
     padding: 10px;
-    height: auto; /* Should be removed. Only for demonstration */
 }
 
 /* Left and right column */
@@ -27,6 +26,7 @@
    -ms-flex: 1;
    flex: 1;
    background-color:#ccc;
+
 }
 
 .column.right.side {
@@ -36,6 +36,7 @@
    -ms-flex: 1;
    flex: 1;
    background-color:#ccc;
+
 }
 
 /* Middle column */
@@ -55,4 +56,9 @@
 
 .center{
   text-align: center;
+}
+
+.AppWidth{
+  min-width: 1000px;
+      max-width: 1265px;
 }
