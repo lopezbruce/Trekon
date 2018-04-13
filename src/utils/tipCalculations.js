@@ -93,17 +93,49 @@ const getDayOfWeekData = arr => {
 
 //Operates on the dayOfWeekData object returned by the getDayOfWeekData function.  Returns a day of the week with the highest gross tipAmount
 const getBestTipDayOfWeek = obj => {
+  let bestTipDayOfWeek = { totalTips: 0 };
+  Object.keys(obj).forEach(day => {
+    if (obj[day]['totalTips'] > bestTipDayOfWeek['totalTips']) {
+      bestTipDayOfWeek = obj[day];
+    }
+  });
 
+  return bestTipDayOfWeek;
 };
 
 //Operates on the dayOfWeekData object returned by the getDayOfWeekData function.  Returns a day of the week with the highest hourlyAverage
 const getBestHourlyDayOfWeek = obj => {
-
+  let bestHourlyDayOfWeek = { hourlyAverage: 0 };
+  Object.keys(obj).forEach(day => {
+    if (obj[day]['hourlyAverage'] > bestHourlyDayOfWeek['hourlyAverage']) {
+      bestHourlyDayOfWeek = obj[day];
+      bestHourlyDayOfWeek.dayName = day;
+    }
+  });
+  return bestHourlyDayOfWeek;
 };
 
 //This function uses all previous functions to generate an object to be used on the Summary page with all neccessary data
 const getStatistics = arr => {
-
+  const highestTipDay = getHighestTipDay(arr);
+  const highestHourlyDay = getHighestHourlyDay(arr);
+  const dayOfWeekData = getDayOfWeekData(arr);
+  const bestTipDayOfWeek = getBestTipDayOfWeek(dayOfWeekData);
+  const bestHourlyDayOfWeek = getBestHourlyDayOfWeek(dayOfWeekData);
+  const totalTips = getTotalTips(arr);
+  const totalHours = getTotalHours(arr);
+  const totalAverage = Math.round(totalTips / totalHours);
+  return {
+    highestTipDay,
+    highestHourlyDay,
+    dayOfWeekData,
+    bestTipDayOfWeek,
+    bestHourlyDayOfWeek,
+    totalTips,
+    totalHours,
+    totalAverage,
+    allData: arr
+  };
 };
 
 export default getStatistics;
