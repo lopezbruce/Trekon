@@ -32,17 +32,30 @@ const getHighestHourlyDay = arr => {
 
 //Sums and returns the total tipAmount from a given aray
 const getTotalTips = arr => {
-
+  if (arr.length === 0) {
+    return 0;
+  }
+  return arr.reduce((acc, cur) => {
+    return acc + cur.tipAmount;
+  }, 0);
 };
 
 //Sums and returns the total hours from a given array
 const getTotalHours = arr => {
-
+  if (arr.length === 0) {
+    return 0;
+  }
+  return arr.reduce((acc, cur) => {
+    return acc + cur.hoursWorked;
+  }, 0);
 };
 
 //Filters a given array by dayName, used to gather stats in the following getDayOfWeekData function
 const dayFilter = (arr, dayName) => {
-
+  let filtered = arr.filter(day => {
+    return day.dayName === dayName;
+  });
+  return filtered;
 };
 
 //Loops through the data of a given array, and filters the data by dayName, returning an object with properites based
