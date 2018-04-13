@@ -15,7 +15,6 @@ const addMutation = gql`
     $notes: String
     $userId: ID
     $dayName: String
-    $fullDate: String!
   ) {
     createTip(
       tipAmount: $tipAmount
@@ -26,7 +25,6 @@ const addMutation = gql`
       notes: $notes
       userId: $userId
       dayName: $dayName
-      fullDate: $fullDate
     ) {
       tipAmount
       hoursWorked
@@ -35,7 +33,6 @@ const addMutation = gql`
       day
       notes
       dayName
-      fullDate
       user {
         id
       }
@@ -65,9 +62,12 @@ class NewTipInputForm extends React.Component {
   submitForm = () => {
     const tipAmount = parseFloat(this.state.tipAmount);
     const hoursWorked = parseFloat(this.state.hoursWorked);
-    const { year, month, day, userId, dayName } = this.props;
-    const { notes } = this.state;
-    const fullDate = `${month}/${day}/${year}`;
+    const year = this.props.year;
+    const month = this.props.month;
+    const day = this.props.day;
+    const notes = this.state.notes;
+    const userId = this.props.user;
+    const dayName = this.props.dayName;
 
     this.props
       .mutate({
@@ -79,8 +79,7 @@ class NewTipInputForm extends React.Component {
           day,
           notes,
           userId,
-          dayName,
-          fullDate
+          dayName
         }
       })
       .then(() => {
@@ -109,6 +108,28 @@ class NewTipInputForm extends React.Component {
   };
 
   render() {
+    const styles = {
+      paperStyle: {
+        width: '98%',
+        margin: '10px auto',
+        marginBottom: '30px',
+        paddingBottom: '10px',
+        overflow: 'hidden'
+      },
+      inputStyle: {
+        margin: 'auto'
+      },
+      submitStyle: {
+        margin: '20px auto',
+        marginRight: '10px',
+        marginLeft: '5px'
+      },
+      formStyle: {
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '0 auto'
+      }
+    };
 
     const { paperStyle, inputStyle, submitStyle, formStyle } = styles;
     return (

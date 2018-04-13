@@ -13,4 +13,6 @@ const TipCard = props => {
   );
 };
 
-export default styled(TipCard);
+export default styled(TipCard)`
+  padding: 10px 0;
+`;

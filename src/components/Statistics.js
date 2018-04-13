@@ -1,13 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 
-class Statistics extends React.Component {
-  render() {
-    return (
-      <div className={this.props.className}>
-        <h2>Statistics</h2>
-      </div>
-    );
-  }
-}
+const Statistics = props => {
+  return (
+    <div className={props.className}>
+      <h2>TODO: STATISTICS PAGE</h2>
+    </div>
+  );
+};
 
-export default Statistics;
+export default styled(Statistics)`
+  width: 1000px;
+  margin: 0 auto;
+`;

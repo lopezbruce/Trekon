@@ -4,8 +4,6 @@ import { withRouter } from 'react-router-dom';
 import Formsy from 'formsy-react';
 import { RaisedButton, Paper } from 'material-ui';
 import { FormsyText } from 'formsy-material-ui/lib';
-import styled from 'styled-components';
-import { GC_AUTH_TOKEN, GC_USER_ID } from '../utils/constants.js';
 
 class SignInUser extends Component {
   constructor(props) {
@@ -35,20 +33,20 @@ class SignInUser extends Component {
 
   signinUser = () => {
     const { email, password } = this.state;
+    console.log('called');
     this.props
       .signinUserMutation({ variables: { email, password } })
       .then(response => {
         window.localStorage.setItem(
-          GC_AUTH_TOKEN,
+          'graphcoolToken',
           response.data.signinUser.token
         );
         window.localStorage.setItem(
-          GC_USER_ID,
+          'graphcoolUserID',
           response.data.signinUser.user.id
         );
-        //Default users to the Welcome view
-        this.props.history.push('/');
         window.location.reload();
+        this.props.history.push('/');
       })
       .catch(e => {
         alert('Error signing in, please try again.');
@@ -58,62 +56,75 @@ class SignInUser extends Component {
   };
 
   render() {
+    const styles = {
+      paperStyle: {
+        width: '300px',
+        margin: '10px auto',
+        marginBottom: '30px',
+        paddingBottom: '10px',
+        overflow: 'hidden'
+      },
+      inputStyle: {
+        margin: 'auto'
+      },
+      submitStyle: {
+        margin: '20px auto',
+        marginRight: '10px',
+        marginLeft: '5px'
+      },
+      formStyle: {
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '0 auto'
+      }
+    };
+
     const { paperStyle, inputStyle, submitStyle, formStyle } = styles;
 
     return (
-      <StyledPage>
-        <AppText>Trekon</AppText>
-        <StyledContainer className="create-user">
-          <h2
-            style={{ color: 'white', textShadow: '0 2px 2px rgba(0,0,0,0.4)' }}
-          >
-            Log<span className="logo-i">i</span>n
-          </h2>
-          <Paper style={paperStyle} zDepth={2}>
-            <Formsy.Form
-              onValid={this.enableButton}
-              onInvalid={this.disableButton}
-              onValidSubmit={this.signinUser}
-              style={formStyle}
-            >
-              <FormsyText
-                name="Email"
-                required
-                validations="isEmail"
-                floatingLabelText="Email"
-                value={this.state.email}
-                onChange={this.handleEmailChange}
-                validationError="Please enter a valid email address"
-                style={inputStyle}
-              />
-              <FormsyText
-                name="password"
-                type="password"
-                required
-                floatingLabelText="Password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}
-                autoComplete="off"
-                style={inputStyle}
-              />
-              <div>
-                <RaisedButton
-                  style={submitStyle}
-                  onTouchTap={() => this.props.history.push('/')}
-                  label="Go Back"
-                />
-                <RaisedButton
-                  style={submitStyle}
-                  type="submit"
-                  label="Submit"
-                  primary={true}
-                  disabled={!this.state.canSubmit}
-                />
-              </div>
-            </Formsy.Form>
-          </Paper>
-        </StyledContainer>
-      </StyledPage>
+      <Paper style={paperStyle} zDepth={2}>
+        <Formsy.Form
+          onValid={this.enableButton}
+          onInvalid={this.disableButton}
+          onValidSubmit={this.signinUser}
+          style={formStyle}
+        >
+          <FormsyText
+            name="Email"
+            required
+            validations="isEmail"
+            floatingLabelText="Email"
+            value={this.state.email}
+            onChange={this.handleEmailChange}
+            validationError="Please enter a valid email address"
+            style={inputStyle}
+          />
+          <FormsyText
+            name="password"
+            type="password"
+            required
+            floatingLabelText="Password"
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+            autoComplete="off"
+            style={inputStyle}
+          />
+          <div>
+            <RaisedButton
+              style={submitStyle}
+              onTouchTap={() => this.props.history.push('/')}
+              label="Go Back"
+            />
+            <RaisedButton
+              style={submitStyle}
+              type="submit"
+              label="Submit"
+              primary={true}
+              disabled={!this.state.canSubmit}
+            />
+          </div>
+        </Formsy.Form>
+      </Paper>
     );
   }
 }

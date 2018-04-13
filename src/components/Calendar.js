@@ -113,8 +113,22 @@ const StyledDiv = styled.div``;
 const HiddenDiv = styled.div`
   visibility: hidden;
 `;
-const DayNamesContainer = styled.div;
+const DayNamesContainer = styled.div`
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+`;
 
-const DayNames = styled.div;
+const DayNames = styled.div`
+  font-size: 20px;
+  width: 13.9%;
+  display: inline-block;
+  float: left;
+  margin-bottom: 20px;
+`;
 
-export default styled(Calendar);
+export default styled(Calendar)`
+  position: relative;
+  animation: ${SlideLeft} 0.3s;
+`;

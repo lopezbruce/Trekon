@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import CalendarHeader from './CalendarHeader';
-import getStatistics from '../utils/tipCalculations';
-import suffixer from '../utils/suffixer';
-import ScrollAnimation from 'react-animate-on-scroll';
-
+import { getAllSummaryData } from '../utils/tipCalculations';
 class Summary extends Component {
   constructor(props) {
     super(props);
@@ -42,26 +39,12 @@ class Summary extends Component {
   };
 
   render() {
-    //Here we filter our data to only diplay from the month selected in the CalendarHeader Component
-    //Data comes from various helper functions in tipSummaryCalculations in the utils folder
     const filteredTipsByMonth = this.props.data.User.tips.filter(
-      data => data.month === this.state.month && data.year === this.state.year
+      month => month.month === this.state.month
     );
-    const summaryData = getStatistics(filteredTipsByMonth);
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ];
+    const summaryData = getAllSummaryData(filteredTipsByMonth);
+    console.log(summaryData);
+    console.log(this.props);
     return (
       <div className={this.props.className}>
         <CalendarHeader
@@ -70,9 +53,33 @@ class Summary extends Component {
           year={this.state.year}
           month={this.state.month}
         />
+        <Content>
+          <span className="heading">Hey {this.props.data.User.firstName}!</span>
+          {summaryData.highestTipDay === 'none' ? (
+            <p>
+              It looks like you haven't entered any information for this month.
+              Let's change that!
+            </p>
+          ) : (
+            <div />
+          )}
+        </Content>
       </div>
     );
   }
 }
 
-export default styled(Summary);
+const Content = styled.div`
+  .heading {
+    font-size: 50px;
+  }
+
+  @media (max-width: 600px) {
+    .heading {
+      font-size: 40px;
+    }
+  }
+`;
+export default styled(Summary)`
+  padding-top: 47px;
+`;

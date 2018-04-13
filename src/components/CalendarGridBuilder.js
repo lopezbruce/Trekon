@@ -20,7 +20,15 @@ export default class CalendarGridBuilder extends Component {
   // Creates JSX elements for empty placeholders in the calender.
   // Takes one parameter for the number created (Generally the day which the month starts, to maintain grid view)
   makePlaceholder = (i, ...props) => {
-    const Placeholder = styled.div;
+    const Placeholder = styled.div`
+      display: inline-block;
+      width: 13.11vw;
+      height: 16.75vw;
+      max-width: 138px;
+      max-height: 160px;
+      float: left;
+      margin-right: 1px;
+    `;
     return <Placeholder className={props.className} key={'placeholder-' + i} />;
   };
 
@@ -184,3 +192,19 @@ export default class CalendarGridBuilder extends Component {
     );
   }
 }
+
+//----------------Styles----------------------
+
+const CalendarGrid = styled.div`
+  position: relative;
+  width: 95%;
+  height: 70vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: ${FadeIn} 2s;
+  ${props =>
+    !props.exit &&
+    `
+      animation: ${props.animationLeft ? SlideLeft : SlideRight} .3s;
+  `};
+`;

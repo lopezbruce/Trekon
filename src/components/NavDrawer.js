@@ -18,6 +18,14 @@ class NavDrawer extends Component {
     }
   }
 
+  handleLogout = () => {
+    // remove token from local storage and reload page to reset apollo client
+    window.localStorage.removeItem('graphcoolToken');
+    window.localStorage.removeItem('graphcoolUserID');
+    this.props.history.push('/');
+    window.location.reload();
+  };
+
   render() {
     return (
       <Drawer
@@ -35,8 +43,36 @@ class NavDrawer extends Component {
             fontWeight: 'bold'
           }}
         >
-          Welcome Name
+          Welcome, {this.props.data.User.firstName}!
         </div>
+        <Divider />
+        <MenuItem
+          onTouchTap={() => {
+            this.props.handleClose();
+            this.props.history.push('/Calendar');
+          }}
+        >
+          Calendar View
+        </MenuItem>
+        <MenuItem
+          onTouchTap={() => {
+            this.props.handleClose();
+            this.props.history.push('/Summary');
+          }}
+        >
+          Summary View
+        </MenuItem>
+        <MenuItem
+          onTouchTap={() => {
+            this.props.handleClose();
+            this.props.history.push('/Statistics');
+          }}
+        >
+          Statistics View
+        </MenuItem>
+        <Divider />
+        <MenuItem onTouchTap={this.handleLogout}>Sign Out</MenuItem>
+      </Drawer>
     );
   }
 }

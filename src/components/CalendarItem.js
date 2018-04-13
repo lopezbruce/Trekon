@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Dialog, FlatButton } from 'material-ui';
 import styled from 'styled-components';
-
+import NewTipInputForm from './NewTipInputForm';
+import UpdateTipInputForm from './UpdateTipInputForm';
 import { graphql, gql } from 'react-apollo';
+import DeleteAlert from './DeleteAlert';
+import TipCard from './TipCard';
 
 class CalendarItem extends Component {
   constructor(props) {
@@ -129,11 +132,6 @@ class CalendarItem extends Component {
           modal={false}
           open={this.state.showDialog}
           onRequestClose={this.handleClose}
-          contentStyle={{
-            width: '100%',
-            maxWidth: '500px',
-            height: '80%'
-          }}
         >
           {!!this.state.tipData ? (
             <span>
@@ -158,21 +156,17 @@ class CalendarItem extends Component {
               modal={false}
               open={this.state.showInputForm}
               onRequestClose={this.hideInputForm}
-              autoDetectWindowHeight={false}
-              repositionOnUpdate={false}
-              contentStyle={{
-                width: '90vw',
-                maxWidth: '500px',
-                transform: 'none'
+              autoScrollBodyContent={true}
+              style={{
+                width: '95%'
               }}
-              bodyStyle={{ padding: '0' }}
             >
               <NewTipInputForm
                 hideInputForm={this.hideInputForm}
                 year={this.props.year}
                 month={this.props.month}
                 day={this.props.date}
-                userId={this.props.user}
+                user={this.props.user}
                 dayName={dayName}
               />
             </Dialog>
@@ -181,14 +175,11 @@ class CalendarItem extends Component {
               modal={false}
               open={this.state.showInputForm}
               onRequestClose={this.hideInputForm}
-              autoDetectWindowHeight={false}
-              repositionOnUpdate={false}
+              autoScrollBodyContent={true}
               contentStyle={{
-                width: '90vw',
-                maxWidth: '500px',
-                transform: 'none'
+                width: '90%',
+                maxWidth: '500px'
               }}
-              bodyStyle={{ padding: '0' }}
             >
               <UpdateTipInputForm
                 hideInputForm={this.hideInputForm}
@@ -207,6 +198,57 @@ class CalendarItem extends Component {
     );
   }
 }
+
+// ----------------- Styles --------------------------------
+
+const CalendarItemContainer = styled.div`
+  width: 13.11vw;
+  height: 16.75vw;
+  max-width: 138px;
+  max-height: 170px;
+  border-top: 1px #bdbdbd solid;
+  border-left: 1px #bdbdbd solid;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+
+  &:nth-last-child(-n + 7) {
+    border-bottom: 1px #bdbdbd solid;
+  }
+  &:nth-child(7n) {
+    border-right: 1px #bdbdbd solid;
+  }
+
+  &:last-child {
+    border-right: 1px #bdbdbd solid;
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+    transition: 0.2s ease;
+    cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 3vw;
+  }
+`;
+const CalendarItemVertical = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 60%;
+  justify-content: space-between;
+`;
+
+const StyledPillbox = styled.p`
+  margin: 5px auto;
+  width: 90%;
+  background-color: rgb(0, 188, 212);
+  color: white;
+  border-radius: 10px;
+`;
+//--------------------------------------
 
 const deleteMutation = gql`
   mutation deleteTip($id: ID!) {

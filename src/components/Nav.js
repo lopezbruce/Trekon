@@ -25,10 +25,23 @@ export default class Nav extends Component {
       <div className="Nav">
         <AppBar
           title={
-            <span>
+            <span
+              style={{ position: 'relative', right: '32px', fontSize: '30px' }}
+            >
               Trekon
             </span>
           }
+          iconElementLeft={
+            <IconButton onTouchTap={this.handleOpenDrawer}>
+              <NavigationMenu />
+            </IconButton>
+          }
+        />
+        <NavDrawer
+          open={this.state.openDrawer}
+          handleClose={this.handleCloseDrawer}
+          data={this.props.data}
+        />
       </div>
     );
   }

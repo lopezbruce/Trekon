@@ -116,26 +116,17 @@ const getBestHourlyDayOfWeek = obj => {
 };
 
 //This function uses all previous functions to generate an object to be used on the Summary page with all neccessary data
-const getStatistics = arr => {
+export const getAllSummaryData = arr => {
   const highestTipDay = getHighestTipDay(arr);
   const highestHourlyDay = getHighestHourlyDay(arr);
   const dayOfWeekData = getDayOfWeekData(arr);
   const bestTipDayOfWeek = getBestTipDayOfWeek(dayOfWeekData);
   const bestHourlyDayOfWeek = getBestHourlyDayOfWeek(dayOfWeekData);
-  const totalTips = getTotalTips(arr);
-  const totalHours = getTotalHours(arr);
-  const totalAverage = Math.round(totalTips / totalHours);
   return {
     highestTipDay,
     highestHourlyDay,
     dayOfWeekData,
     bestTipDayOfWeek,
-    bestHourlyDayOfWeek,
-    totalTips,
-    totalHours,
-    totalAverage,
-    allData: arr
+    bestHourlyDayOfWeek
   };
 };
-
-export default getStatistics;
