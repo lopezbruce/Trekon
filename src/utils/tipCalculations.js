@@ -1,6 +1,17 @@
 //Takes an array, returns the day object with the highest tipAmount
 const getHighestTipDay = arr => {
-
+  if (arr.length === 0) {
+    return 'none';
+  }
+  let indexOfHighest = 0;
+  let highestTipAmount = 0;
+  arr.forEach(day => {
+    if (day.tipAmount > highestTipAmount) {
+      highestTipAmount = day.tipAmount;
+      indexOfHighest = arr.indexOf(day);
+    }
+  });
+  return arr[indexOfHighest];
 };
 
 //Takes an array, returns the day object with the highest hourly amount

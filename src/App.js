@@ -7,14 +7,10 @@ import Calendar from './components/Calendar';
 import Summary from './components/Summary';
 import Statistics from './components/Statistics';
 import Welcome from './components/Welcome';
+
 class App extends React.Component {
   componentDidMount() {
-    /*
     //TODO: Set up functional user subscriptions to get rid of page reloading on data changes
-    this.props.subscribeToUserChange({
-      id: this.props.id,
-    })
-    */
   }
 
   render() {
