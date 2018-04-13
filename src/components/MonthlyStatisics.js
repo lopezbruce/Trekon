@@ -90,6 +90,188 @@ class MonthlyStatistics extends React.Component {
           )}
         </ChartContainer>
 
+        <Paper
+          zDepth={2}
+          style={{ padding: '1em', width: '95%', margin: '3em auto' }}
+        >
+          <StatsContainer>
+            <StatTitle>All Days</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.allData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.totalTips / statistics.allData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.totalAverage} / hr
+            </StatItem>
+            <StatTitle>Sunday</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Sunday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Sunday.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.dayOfWeekData.Sunday.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Sunday.totalTips /
+                statistics.dayOfWeekData.Sunday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Sunday.hourlyAverage} / hr
+            </StatItem>
+            <StatTitle>Monday</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Monday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Monday.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.dayOfWeekData.Monday.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Monday.totalTips /
+                statistics.dayOfWeekData.Monday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Monday.hourlyAverage} / hr
+            </StatItem>
+            <StatTitle>Tuesday</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Tuesday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Tuesday.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.dayOfWeekData.Tuesday.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Tuesday.totalTips /
+                statistics.dayOfWeekData.Tuesday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Tuesday.hourlyAverage} / hr
+            </StatItem>
+            <StatTitle>Wednesday</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Wednesday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Wednesday.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.dayOfWeekData.Wednesday.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Wednesday.totalTips /
+                statistics.dayOfWeekData.Wednesday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Wednesday.hourlyAverage} / hr
+            </StatItem>
+            <StatTitle>Thursday</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Thursday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Thursday.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.dayOfWeekData.Thursday.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Thursday.totalTips /
+                statistics.dayOfWeekData.Thursday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Thursday.hourlyAverage} / hr
+            </StatItem>
+            <StatTitle>Friday</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Friday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Friday.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.dayOfWeekData.Friday.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Friday.totalTips /
+                statistics.dayOfWeekData.Friday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Friday.hourlyAverage} / hr
+            </StatItem>
+            <StatTitle>Saturday</StatTitle>
+            <StatItem>
+              <BoldSpan>Days Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Saturday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Hours Worked: </BoldSpan>
+              {statistics.dayOfWeekData.Saturday.totalHours}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Total Tips: </BoldSpan>
+              ${statistics.dayOfWeekData.Saturday.totalTips}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Saturday.totalTips /
+                statistics.dayOfWeekData.Saturday.tipData.length}
+            </StatItem>
+            <StatItem>
+              <BoldSpan>Daily Hourly Average: </BoldSpan>
+              ${statistics.dayOfWeekData.Saturday.hourlyAverage} / hr
+            </StatItem>
+          </StatsContainer>
+        </Paper>
       </div>
     );
   }
