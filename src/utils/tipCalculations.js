@@ -61,7 +61,34 @@ const dayFilter = (arr, dayName) => {
 //Loops through the data of a given array, and filters the data by dayName, returning an object with properites based
 //on the previous functions.
 const getDayOfWeekData = arr => {
-
+  const dayNames = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
+  let dayData = {};
+  dayNames.forEach(dayName => {
+    const tipData = dayFilter(arr, dayName);
+    dayData[dayName] = { tipData };
+    if (tipData.length > 0) {
+      dayData[dayName].totalTips = getTotalTips(tipData);
+      dayData[dayName].totalHours = getTotalHours(tipData);
+      dayData[dayName].hourlyAverage = Math.round(
+        dayData[dayName].totalTips / dayData[dayName].totalHours
+      );
+      dayData[dayName].dayName = dayName;
+    } else {
+      dayData[dayName].totalTips = 0;
+      dayData[dayName].totalHours = 0;
+      dayData[dayName].hourlyAverage = 0;
+      dayData[dayName].dayName = dayName;
+    }
+  });
+  return dayData;
 };
 
 //Operates on the dayOfWeekData object returned by the getDayOfWeekData function.  Returns a day of the week with the highest gross tipAmount
