@@ -8,10 +8,12 @@ const Landing = props => {
     <div>
       <ImageContainer />
       <Content>
-        <div style={{ fontSize: '36px' }}>Welcome to Trekon</div>
+        <div className="text">Welcome to</div>
+        <div className="logo">Trekon</div>
         <div>
-          <p style={{ marginTop: '10em', fontSize: '20px' }}>
-            The world's best tip tracking app.
+          <p style={{ marginTop: '3em', fontSize: '20px' }}>
+            The world's best cloud-based t<span className="logo-i">i</span>p
+            track<span className="logo-i">i</span>ng app.
           </p>
           <Button onClick={() => props.history.push('/CreateUser')}>
             <p>Sign up for free!</p>
@@ -31,7 +33,7 @@ const Landing = props => {
 const Button = styled.div`
   border-radius: 4px;
   display: flex;
-  background-color: #3e8792;
+  background-color: rgb(0, 188, 212);
   width: 200px;
   height: 3em;
   margin: 20px auto;
@@ -48,8 +50,36 @@ const Button = styled.div`
 const Content = styled.div`
   color: white;
   margin: 5px;
-  margin-top: -60vh;
+  margin-top: -65vh;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+
+  .text {
+    font-size: 60px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: 600px) {
+    .text {
+      font-size: 40px;
+    }
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 90px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .logo-i {
+    color: rgb(0, 188, 212);
+    position: relative;
+  }
+
+  .logo-i:before {
+    content: 'ı';
+    position: absolute;
+    color: white;
+  }
 `;
 const ImageContainer = styled.div`
   position: relative;

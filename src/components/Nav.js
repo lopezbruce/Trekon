@@ -26,9 +26,14 @@ export default class Nav extends Component {
         <AppBar
           title={
             <span
-              style={{ position: 'relative', right: '32px', fontSize: '30px' }}
+              style={{
+                position: 'relative',
+                right: '32px',
+                fontSize: '30px',
+                textShadow: '0 2px 2px rgba(0,0,0,0.4)'
+              }}
             >
-              Trekon
+              Tipout
             </span>
           }
           iconElementLeft={
@@ -36,6 +41,7 @@ export default class Nav extends Component {
               <NavigationMenu />
             </IconButton>
           }
+          style={{ position: 'fixed' }}
         />
         <NavDrawer
           open={this.state.openDrawer}
