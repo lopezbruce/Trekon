@@ -14,14 +14,13 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className={this.props.className}>Test</div>
-    );
-    }
+    return <div className={this.props.className}>Test</div>;
   }
+}
 /*
 //TODO: Set up functional user subscriptions to get rid of page reloading on data changes
 
 //TODO: Set up functional user subscriptions to get rid of page reloading on data changes
 
 export default AppWithData(withRouter(StyledApp));
+*/
