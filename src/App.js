@@ -10,7 +10,7 @@ import Statistics from './components/Statistics';
 class App extends React.Component {
   componentDidMount() {
     /*
-    console.log(this.props)
+    //TODO: Set up functional user subscriptions to get rid of page reloading on data changes
     this.props.subscribeToUserChange({
       id: this.props.id,
     })
@@ -75,6 +75,8 @@ const userQuery = gql`
   }
 `;
 /*
+//TODO: Set up functional user subscriptions to get rid of page reloading on data changes
+
 const userSubscription = gql`
   subscription onUserChange($id: ID) {
     User(id: $id) {
@@ -98,6 +100,7 @@ const AppWithData = graphql(userQuery, {
   name: 'userQuery',
   options: ownProps => ({ variables: { id: ownProps.id } })
   /*
+//TODO: Set up functional user subscriptions to get rid of page reloading on data changes
   props: props => {
     return {
       subscribeToUserChange: params => {

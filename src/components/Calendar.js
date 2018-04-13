@@ -110,9 +110,7 @@ class Calendar extends Component {
 //styles
 
 const StyledDiv = styled.div``;
-const HiddenDiv = styled.div`
-  visibility: hidden;
-`;
+const HiddenDiv = styled.div`visibility: hidden;`;
 const DayNamesContainer = styled.div`
   width: 95%;
   max-width: 1000px;

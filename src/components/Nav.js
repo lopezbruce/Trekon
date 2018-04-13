@@ -33,7 +33,7 @@ export default class Nav extends Component {
                 textShadow: '0 2px 2px rgba(0,0,0,0.4)'
               }}
             >
-              Tipout
+              Trekon
             </span>
           }
           iconElementLeft={

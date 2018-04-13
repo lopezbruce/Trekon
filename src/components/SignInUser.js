@@ -85,7 +85,9 @@ class SignInUser extends Component {
 
     return (
       <StyledPage>
-        <AppText>Trekon</AppText>
+        <AppText>
+          Trekon
+        </AppText>
         <StyledContainer className="create-user">
           <h2
             style={{ color: 'white', textShadow: '0 2px 2px rgba(0,0,0,0.4)' }}
