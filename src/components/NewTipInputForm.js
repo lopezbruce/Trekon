@@ -15,6 +15,7 @@ const addMutation = gql`
     $notes: String
     $userId: ID
     $dayName: String
+    $fullDate: String!
   ) {
     createTip(
       tipAmount: $tipAmount
@@ -25,6 +26,7 @@ const addMutation = gql`
       notes: $notes
       userId: $userId
       dayName: $dayName
+      fullDate: $fullDate
     ) {
       tipAmount
       hoursWorked
@@ -33,6 +35,7 @@ const addMutation = gql`
       day
       notes
       dayName
+      fullDate
       user {
         id
       }
@@ -68,6 +71,7 @@ class NewTipInputForm extends React.Component {
     const notes = this.state.notes;
     const userId = this.props.user;
     const dayName = this.props.dayName;
+    const fullDate = `${month}/${day}/${year}`;
 
     this.props
       .mutate({
@@ -79,7 +83,8 @@ class NewTipInputForm extends React.Component {
           day,
           notes,
           userId,
-          dayName
+          dayName,
+          fullDate
         }
       })
       .then(() => {
