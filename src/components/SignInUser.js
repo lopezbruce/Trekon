@@ -46,8 +46,8 @@ class SignInUser extends Component {
           GC_USER_ID,
           response.data.signinUser.user.id
         );
-        //Default users to the Calendar view
-        this.props.history.push('/Calendar');
+        //Default users to the Welcome view
+        this.props.history.push('/');
         window.location.reload();
       })
       .catch(e => {
@@ -85,9 +85,7 @@ class SignInUser extends Component {
 
     return (
       <StyledPage>
-        <AppText>
-          Trekon
-        </AppText>
+        <AppText>Trekon</AppText>
         <StyledContainer className="create-user">
           <h2
             style={{ color: 'white', textShadow: '0 2px 2px rgba(0,0,0,0.4)' }}
