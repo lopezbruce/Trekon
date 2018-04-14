@@ -57,7 +57,7 @@ const Content = styled.div`
   z-index: 2;
   color: white;
   margin: 5px;
-  margin-top: -65vh;
+  margin-top: -85vh;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
 
   .text {
@@ -91,12 +91,12 @@ const Content = styled.div`
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: 100%;
   background-image: url(${Background});
   background-position-x: center;
   background-position-y: 70%;
   background-size: cover;
-  filter: blur(3px) brightness(0.6);
+  filter: blur(1px) brightness(0.6);
   z-index: 1;
 `;
 
