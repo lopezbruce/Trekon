@@ -74,9 +74,9 @@ class CalendarItem extends Component {
 
   getFullDate = () => {
     const day = (this.props.date + this.state.startingDay - 1) % 7;
-    return `${this.state.dayNames[day]} ${this.state.monthNames[
-      this.props.month
-    ]} ${this.props.date}, ${this.props.year}`;
+    return `${this.state.dayNames[day]} ${
+      this.state.monthNames[this.props.month]
+    } ${this.props.date}, ${this.props.year}`;
   };
 
   componentWillReceiveProps(nextProps) {

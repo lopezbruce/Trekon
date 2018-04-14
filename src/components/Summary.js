@@ -131,9 +131,7 @@ class Summary extends Component {
                 <p>
                   From an hourly standpoint, your best day was{' '}
                   <b>{summaryData.bestHourlyDayOfWeek.dayName}</b>. You worked a
-                  total of <b>
-                    {summaryData.bestHourlyDayOfWeek.totalHours}
-                  </b>{' '}
+                  total of <b>{summaryData.bestHourlyDayOfWeek.totalHours}</b>{' '}
                   hours on that day of the week, and averaged{' '}
                   <b>
                     ${summaryData.bestHourlyDayOfWeek.hourlyAverage} per hour

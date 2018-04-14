@@ -4,7 +4,7 @@ import YearDropdown from './YearDropdown';
 import MonthDropdown from './MonthDropdown';
 import Chart from './Chart';
 import getStatistics from '../utils/tipCalculations';
-import { Paper, Divider } from 'material-ui';
+import { Paper } from 'material-ui';
 
 class MonthlyStatistics extends React.Component {
   constructor(props) {
@@ -339,7 +339,9 @@ const StatItem = styled.p`
   min-width: 275px;
 `;
 
-const BoldSpan = styled.span`font-weight: bold;`;
+const BoldSpan = styled.span`
+  font-weight: bold;
+`;
 
 export default styled(MonthlyStatistics)`
   max-width: 1000px;

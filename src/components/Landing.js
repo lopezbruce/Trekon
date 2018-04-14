@@ -9,9 +9,7 @@ const Landing = props => {
       <ImageContainer />
       <Content>
         <div className="text">Welcome to</div>
-        <div className="logo">
-          Trekon
-        </div>
+        <div className="logo">Trekon</div>
         <div>
           <p style={{ marginTop: '3em', fontSize: '20px' }}>
             The world's best cloud-based t<span className="logo-i">i</span>p
@@ -102,6 +100,8 @@ const ImageContainer = styled.div`
   z-index: 1;
 `;
 
-const StyledLink = styled(Link)`color: white;`;
+const StyledLink = styled(Link)`
+  color: white;
+`;
 
 export default withRouter(Landing);
