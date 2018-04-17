@@ -28,7 +28,7 @@ const StyledPage = styled.div`
   margin: 0 auto;
 
   .logo-i {
-    color: rgb(0, 188, 212);
+    color: rgb(0, 0, 128);
     position: relative;
   }
 
