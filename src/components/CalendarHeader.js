@@ -60,6 +60,8 @@ export default styled(CalendarHeader)`
     .calendar-button {
       min-width: 0 !important;
       max-width: 20vw !important;
+      background-color: #000080;
+      color: white;
     }
     .month-name {
       font-size: 25px;
