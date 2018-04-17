@@ -63,6 +63,8 @@ export default styled(CalendarHeader)`
     }
     .month-name {
       font-size: 25px;
+      font-family: "Ariel"
+      font-weight: bold;
     }
   }
 `;
