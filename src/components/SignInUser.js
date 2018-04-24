@@ -6,6 +6,7 @@ import { RaisedButton, Paper } from 'material-ui';
 import { FormsyText } from 'formsy-material-ui/lib';
 import styled from 'styled-components';
 import { GC_AUTH_TOKEN, GC_USER_ID } from '../utils/constants.js';
+import Background from '../assets/navy_background.jpeg';
 
 class SignInUser extends Component {
   constructor(props) {
@@ -67,12 +68,14 @@ class SignInUser extends Component {
         overflow: 'hidden'
       },
       inputStyle: {
-        margin: 'auto'
+        margin: 'auto',
+        color: '#f7c31b'
       },
       submitStyle: {
         margin: '20px auto',
         marginRight: '10px',
-        marginLeft: '5px'
+        marginLeft: '5px',
+        color: '#f7c31b'
       },
       formStyle: {
         display: 'flex',
@@ -85,7 +88,8 @@ class SignInUser extends Component {
 
     return (
       <StyledPage>
-        <AppText>Trekon</AppText>
+      <ImageContainer>
+        <AppText>TREKON</AppText>
         <StyledContainer className="create-user">
           <h2
             style={{ color: 'white', textShadow: '0 2px 2px rgba(0,0,0,0.4)' }}
@@ -136,6 +140,7 @@ class SignInUser extends Component {
             </Formsy.Form>
           </Paper>
         </StyledContainer>
+        </ImageContainer>
       </StyledPage>
     );
   }
@@ -154,8 +159,8 @@ const signinUserMutation = gql`
 
 const StyledContainer = styled.div`
   padding-top: 7vh;
-  background-color: #c4c4c4;
   color: white;
+  font-family: 'Roboto', sans-serif;
   margin: 0 auto;
 `;
 
@@ -184,7 +189,20 @@ const AppText = styled.h2`
   padding-top: 10vh;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   color: white;
-  font-size: 90px;
+  font-size: 70px;
+  font-family: 'Heebo', sans-serif;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url(${Background});
+  background-position-x: center;
+  background-position-y: 70%;
+  background-size: cover;
+  filter: brightness(0.9);
+  z-index: 1;
 `;
 
 export default graphql(signinUserMutation, { name: 'signinUserMutation' })(

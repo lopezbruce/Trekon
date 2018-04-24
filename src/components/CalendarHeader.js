@@ -55,17 +55,17 @@ export default styled(CalendarHeader)`
   }
   @media (max-width: 600px) {
     .calendar-header h2 {
-      font-size: 20px;
+      font-size: 40px;
     }
     .calendar-button {
       min-width: 0 !important;
       max-width: 20vw !important;
-      background-color: #000080;
+      background-color: #000096;
       color: white;
     }
     .month-name {
-      font-size: 25px;
-      font-family: "Ariel"
+      font-size: 45px;
+      font-family: "Roboto"
       font-weight: bold;
     }
   }

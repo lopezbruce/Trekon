@@ -130,7 +130,7 @@ const StyledApp = styled(App)`
   color: #212121;
   position: relative;
   overflow: hidden;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Ariel', sans-serif;
   text-align: center;
   margin: 0;
 `;

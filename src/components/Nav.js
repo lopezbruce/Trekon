@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppBar, IconButton } from 'material-ui';
-
+import styled from 'styled-components';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import NavDrawer from './NavDrawer';
 
@@ -22,6 +22,7 @@ export default class Nav extends Component {
 
   render() {
     return (
+
       <div className="Nav">
         <AppBar
           title={
@@ -41,7 +42,7 @@ export default class Nav extends Component {
               <NavigationMenu />
             </IconButton>
           }
-          style={{ position: 'fixed' }}
+          style={{ position: 'fixed'}}
         />
         <NavDrawer
           open={this.state.openDrawer}
@@ -49,6 +50,7 @@ export default class Nav extends Component {
           data={this.props.data}
         />
       </div>
+      
     );
   }
 }

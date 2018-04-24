@@ -12,7 +12,7 @@ class Calendar extends Component {
     this.state = {
       year: date.getFullYear(),
       month: date.getMonth(),
-      dayNames: ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'],
+      dayNames: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'],
       pickerValue: null,
       pickerFocusDate: null,
       tipData: props.data.User.tips

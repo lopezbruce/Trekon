@@ -217,7 +217,7 @@ const CalendarItemContainer = styled.div`
   width: 13.11vw;
   height: 16.75vw;
   max-width: 138px;
-  max-height: 170px;
+  max-height: 150px;
   border-top: 1px #bdbdbd solid;
   border-left: 1px #bdbdbd solid;
   display: inline-block;
@@ -256,7 +256,7 @@ const CalendarItemVertical = styled.div`
 const StyledPillbox = styled.p`
   margin: 5px auto;
   width: 90%;
-  background-color: rgb(0, 188, 212);
+  background-color: navy;
   color: white;
   border-radius: 10px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
