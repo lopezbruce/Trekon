@@ -9,6 +9,7 @@ import { localPoint } from '@vx/event';
 import { bisector } from 'd3-array';
 import formatDate from '../utils/formatDate';
 
+
 class Chart extends React.Component {
   constructor(props) {
     super(props);
@@ -72,6 +73,7 @@ class Chart extends React.Component {
     const xScale = scaleTime({
       range: [25, width],
       domain: [minDate, maxDate]
+
     });
     const yScale = scaleLinear({
       range: [height, 0],
@@ -80,7 +82,7 @@ class Chart extends React.Component {
 
     return (
       <div>
-        <svg ref={s => (this.svg = s)} width={width} height={parentHeight}>
+        <svg ref={s => (this.svg = s)} width={width} height={parentHeight} >
           <AxisBottom
             data={data}
             scale={xScale}
@@ -90,9 +92,9 @@ class Chart extends React.Component {
             hideTicks
             tickLabelProps={() => ({
               fontFamily: 'Arial',
-              fontSize: 10,
+              fontSize: 12,
               fill: 'white',
-              dx: '-1.3em'
+              dx: '-1.3em',
             })}
           />
           <AxisLeft
@@ -104,9 +106,9 @@ class Chart extends React.Component {
             left={25}
             tickLabelProps={() => ({
               fontFamily: 'Arial',
-              fontSize: 10,
+              fontSize: 12,
               fill: 'white',
-              dx: '-1em'
+              dx: '-1.2em'
             })}
           />
           <LinearGradient
@@ -155,14 +157,14 @@ class Chart extends React.Component {
               <Line
                 from={{ x: tooltipLeft, y: yScale(y(maxTipData[0])) }}
                 to={{ x: tooltipLeft, y: yScale(0) }}
-                stroke="#ffffff"
+                stroke="gold"
                 strokeDasharray="2,2"
               />
               <circle
                 r="8"
                 cx={tooltipLeft}
                 cy={tooltipTop}
-                fill="#00f1a1"
+                fill="gold"
                 fillOpacity={0.4}
                 style={{ pointerEvents: 'none' }}
               />
@@ -170,7 +172,7 @@ class Chart extends React.Component {
                 r="4"
                 cx={tooltipLeft}
                 cy={tooltipTop}
-                fill="#00f1a1"
+                fill="gold"
                 style={{ pointerEvents: 'none' }}
               />
             </g>
@@ -182,7 +184,7 @@ class Chart extends React.Component {
               top={tooltipTop - 36}
               left={tooltipLeft + 12}
               style={{
-                backgroundColor: '#6086D6',
+                backgroundColor: 'navy',
                 color: 'white'
               }}
             >

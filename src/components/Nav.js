@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { AppBar, IconButton } from 'material-ui';
 import styled from 'styled-components';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import NavDrawer from './NavDrawer';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    textColor: 'Black',
+    primary1Color: 'navy',
+    primary2Color: 'pink',
+    accent1Color: 'purple',
+    pickerHeaderColor: 'red',
+    alternateTextColor: 'Gold'
+  }
+});
 
 export default class Nav extends Component {
   constructor(props) {
@@ -22,7 +35,7 @@ export default class Nav extends Component {
 
   render() {
     return (
-
+<MuiThemeProvider muiTheme={muiTheme}>
       <div className="Nav">
         <AppBar
           title={
@@ -50,7 +63,8 @@ export default class Nav extends Component {
           data={this.props.data}
         />
       </div>
-      
+      </MuiThemeProvider>
+
     );
   }
 }

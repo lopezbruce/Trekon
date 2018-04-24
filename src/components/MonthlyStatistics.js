@@ -310,7 +310,7 @@ const ChartContainer = styled.div`
   margin-top: 3em;
   width: 600px;
   height: 400px;
-  background-color: rgb(0, 188, 212);
+  background-color: navy;
   border-radius: 8px;
   color: white;
   padding: 15px;

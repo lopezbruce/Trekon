@@ -1,6 +1,19 @@
 import React from 'react';
 import { RaisedButton } from 'material-ui';
 import styled from 'styled-components';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    textColor: 'Black',
+    primary1Color: 'navy',
+    primary2Color: 'pink',
+    accent1Color: 'purple',
+    pickerHeaderColor: 'red',
+    alternateTextColor: 'Gold'
+  }
+});
 
 const monthNamesFull = [
   'January',
@@ -19,6 +32,7 @@ const monthNamesFull = [
 
 const CalendarHeader = props => {
   return (
+    <MuiThemeProvider muiTheme={muiTheme}>
     <div className={props.className}>
       <RaisedButton
         label="&larr;"
@@ -36,6 +50,7 @@ const CalendarHeader = props => {
         className="calendar-button"
       />
     </div>
+    </MuiThemeProvider>
   );
 };
 
