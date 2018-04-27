@@ -137,6 +137,7 @@ class Chart extends React.Component {
             width={width}
             height={height}
             fill="transparent"
+            fillColor="gold"
             onMouseMove={data => event => {
               const { x: xPoint } = localPoint(this.svg, event);
               const x0 = xScale.invert(xPoint);
@@ -164,7 +165,7 @@ class Chart extends React.Component {
                 r="8"
                 cx={tooltipLeft}
                 cy={tooltipTop}
-                fill="gold"
+                fill="white"
                 fillOpacity={0.4}
                 style={{ pointerEvents: 'none' }}
               />
@@ -172,7 +173,7 @@ class Chart extends React.Component {
                 r="4"
                 cx={tooltipLeft}
                 cy={tooltipTop}
-                fill="gold"
+                fill="white"
                 style={{ pointerEvents: 'none' }}
               />
             </g>
@@ -185,7 +186,7 @@ class Chart extends React.Component {
               left={tooltipLeft + 12}
               style={{
                 backgroundColor: 'navy',
-                color: 'white'
+                color: 'gold'
               }}
             >
               {y(tooltipData)}

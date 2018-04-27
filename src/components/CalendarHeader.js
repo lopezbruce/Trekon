@@ -7,11 +7,11 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 const muiTheme = getMuiTheme({
   palette: {
     textColor: 'Black',
-    primary1Color: 'navy',
+    primary1Color: 'gold',
     primary2Color: 'pink',
     accent1Color: 'purple',
     pickerHeaderColor: 'red',
-    alternateTextColor: 'Gold'
+    alternateTextColor: 'navy'
   }
 });
 
@@ -66,6 +66,8 @@ export default styled(CalendarHeader)`
 
   .month-name {
     font-size: 45px;
+    font-family: 'Heebo';
+    font-weight: bold;
     cursor: pointer;
   }
   @media (max-width: 600px) {
@@ -80,7 +82,6 @@ export default styled(CalendarHeader)`
     }
     .month-name {
       font-size: 45px;
-      font-family: "Roboto"
       font-weight: bold;
     }
   }

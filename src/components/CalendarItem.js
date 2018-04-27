@@ -217,7 +217,7 @@ const CalendarItemContainer = styled.div`
   width: 13.11vw;
   height: 16.75vw;
   max-width: 138px;
-  max-height: 150px;
+  max-height: 170px;
   border-top: 1px #bdbdbd solid;
   border-left: 1px #bdbdbd solid;
   display: inline-block;
