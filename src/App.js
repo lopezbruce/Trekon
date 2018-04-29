@@ -49,7 +49,15 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path="/*" component={Welcome} />
+          <Route
+            path="/*"
+            component={() => (
+              <Welcome
+                data={this.props.userQuery}
+                loading={this.props.userQuery.loading}
+              />
+            )}
+          />
         </Switch>
       </div>
     );

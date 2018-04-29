@@ -1,51 +1,135 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import CalendarGridBuilder from './CalendarGridBuilder';
+import CalendarHeader from './CalendarHeader';
 import styled from 'styled-components';
+import { SlideLeft } from '../utils/AnimationHelpers';
+import { DatePicker } from 'material-ui';
 
-class SignInUser extends Component {
+class Welcome extends Component {
+  constructor(props) {
+    super(props);
+    let date = new Date();
+    this.state = {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      dayNames: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'],
+      pickerValue: null,
+      pickerFocusDate: null,
+      tipData: props.data.User.tips
+    };
+  }
+
+  handleOpenDatePicker = () => {
+    this.refs.dp.focus();
+  };
+
+  handlePickerChange = (event, date) => {
+    this.setState({
+      pickerValue: date,
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      pickerFocusDate: date.getDate()
+    });
+  };
+
+  handleNext = () => {
+    if (this.state.month === 11) {
+      this.setState(prevState => ({
+        month: 0,
+        year: prevState.year + 1,
+        pickerFocusDate: null
+      }));
+    } else {
+      this.setState(prevState => ({
+        month: prevState.month + 1,
+        pickerFocusDate: null
+      }));
+    }
+  };
+
+  handlePrev = () => {
+    if (this.state.month === 0) {
+      this.setState(prevState => ({
+        month: 11,
+        year: prevState.year - 1,
+        pickerFocusDate: null
+      }));
+    } else {
+      this.setState(prevState => ({
+        month: prevState.month - 1,
+        pickerFocusDate: null
+      }));
+    }
+  };
+
   render() {
+    const user = this.props.data.User.id;
+    const tipData = this.state.tipData.filter(
+      tip => tip.month === this.state.month && tip.year === this.state.year
+    );
     return (
-      <StyledPage>
-        <AppText>Trekon</AppText>
-        <StyledContainer />
-      </StyledPage>
+      <div className={this.props.className}>
+        <StyledDiv>
+          <HiddenDiv>
+            <DatePicker
+              ref="dp"
+              value={this.state.pickerValue}
+              id="datepick"
+              openToYearSelection
+              onChange={this.handlePickerChange}
+              hideCalendarDate
+              autoOk
+            />
+          </HiddenDiv>
+          <CalendarHeader
+            handleNext={this.handleNext}
+            handlePrev={this.handlePrev}
+            handleOpenDatePicker={this.handleOpenDatePicker}
+            year={this.state.year}
+            month={this.state.month}
+          />
+        </StyledDiv>
+        <DayNamesContainer>
+          {this.state.dayNames.map(day => <DayNames key={day}>{day}</DayNames>)}
+        </DayNamesContainer>
+        <CalendarGridBuilder
+          handleNext={this.handleNext}
+          handlePrev={this.handlePrev}
+          year={this.state.year}
+          month={this.state.month}
+          pickerFocusDate={this.state.pickerFocusDate}
+          tipData={tipData}
+          loading={this.props.loading}
+          user={user}
+        />
+      </div>
     );
   }
 }
 
-const StyledContainer = styled.div`
-  padding-top: 7vh;
-  background-color: #c4c4c4;
-  color: white;
+//styles
+
+const StyledDiv = styled.div``;
+const HiddenDiv = styled.div`
+  visibility: hidden;
+`;
+const DayNamesContainer = styled.div`
+  width: 95%;
+  max-width: 1000px;
   margin: 0 auto;
+  text-align: center;
 `;
 
-const StyledPage = styled.div`
-  height: 100vh;
-  max-height: 110vh
-  width: 100vw;
-  background-color: #c4c4c4;
-  margin: 0 auto;
-
-  .logo-i {
-    color: rgb(0, 0, 128);
-    position: relative;
-  }
-
-  .logo-i:before {
-    content: "ı";
-    position: absolute;
-    color: white;
-  }
-
+const DayNames = styled.div`
+  font-size: 20px;
+  width: 13.9%;
+  display: inline-block;
+  float: left;
+  margin-bottom: 20px;
 `;
 
-const AppText = styled.h2`
-  margin: 0 auto;
-  padding-top: 40vh;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
-  color: white;
-  font-size: 90px;
+export default styled(Welcome)`
+  position: relative;
+  animation: ${SlideLeft} 0.3s;
+  margin-top: 50px;
 `;
-
-export default withRouter(SignInUser);
