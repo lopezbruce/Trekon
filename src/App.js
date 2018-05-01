@@ -7,6 +7,7 @@ import Calendar from './components/Calendar';
 import Summary from './components/Summary';
 import Statistics from './components/Statistics';
 import Welcome from './components/Welcome';
+import POS from './components/POS';
 class App extends React.Component {
   componentDidMount() {
     /*
@@ -44,6 +45,15 @@ class App extends React.Component {
             path="/Statistics"
             component={() => (
               <Statistics
+                data={this.props.userQuery}
+                loading={this.props.userQuery.loading}
+              />
+            )}
+          />
+          <Route
+            path="/POS"
+            component={() => (
+              <POS
                 data={this.props.userQuery}
                 loading={this.props.userQuery.loading}
               />

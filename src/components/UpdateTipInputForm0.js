@@ -123,7 +123,7 @@ class UpdateTipInputForm extends React.Component {
               name="tipAmount"
               required
               validations="isNumeric"
-              floatingLabelText="How much did you make?"
+              floatingLabelText="Add cash tips?"
               hintText="Tips"
               value={this.state.tipAmount}
               onChange={this.handleTipChange}

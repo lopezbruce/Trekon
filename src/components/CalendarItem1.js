@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Dialog, FlatButton } from 'material-ui';
+import { Paper, FlatButton } from 'material-ui';
 import styled from 'styled-components';
-import NewTipInputForm from './NewTipInputForm0';
-import UpdateTipInputForm from './UpdateTipInputForm0';
+import NewTipInputForm from './NewTipInputForm1';
+import UpdateTipInputForm from './UpdateTipInputForm1';
 import { graphql, gql } from 'react-apollo';
 import DeleteAlert from './DeleteAlert';
-import TipCard from './TipCard0';
+import TipCard from './TipCard1';
 
 class CalendarItem extends Component {
   constructor(props) {
@@ -108,26 +108,11 @@ class CalendarItem extends Component {
     const date = this.getFullDate();
 
     return (
-      <CalendarItemContainer className="container" onClick={this.handleOpen}>
-        <CalendarItemVertical>
-          <br />
-          {this.getFullDate()}
-          {!!this.state.tipData ? (
-            <div>
-              <StyledPillbox>${this.state.tipData.tipAmount}</StyledPillbox>
-              <StyledPillbox>
-                ${Math.round(
-                  this.state.tipData.tipAmount / this.state.tipData.hoursWorked
-                )}/hr
-              </StyledPillbox>
-            </div>
-          ) : null}
-        </CalendarItemVertical>
-        <Dialog
+      <CalendarItemContainer className="">
+        <Paper
           title={date}
           actions={actions}
           modal={false}
-          open={this.state.showDialog}
           onRequestClose={this.handleClose}
           contentStyle={{
             width: '100%',
@@ -154,11 +139,9 @@ class CalendarItem extends Component {
             <h3>Day Off :) or you haven't receive any tip yet :(</h3>
           )}
           {!this.state.tipData ? (
-            <Dialog
+            <Paper
               modal={false}
-              open={this.state.showInputForm}
-              onRequestClose={this.hideInputForm}
-              autoDetectWindowHeight={false}
+              autoDetectWindowHeight={true}
               repositionOnUpdate={false}
               contentStyle={{
                 width: '90vw',
@@ -175,13 +158,11 @@ class CalendarItem extends Component {
                 userId={this.props.user}
                 dayName={dayName}
               />
-            </Dialog>
+            </Paper>
           ) : (
-            <Dialog
+            <Paper
               modal={false}
-              open={this.state.showInputForm}
-              onRequestClose={this.hideInputForm}
-              autoDetectWindowHeight={false}
+              autoDetectWindowHeight={true}
               repositionOnUpdate={false}
               contentStyle={{
                 width: '90vw',
@@ -198,11 +179,10 @@ class CalendarItem extends Component {
                 id={this.state.tipData.id}
                 tipAmount={this.state.tipData.tipAmount}
                 hoursWorked={this.state.tipData.hoursWorked}
-                notes={this.state.tipData.notes}
               />
-            </Dialog>
+            </Paper>
           )}
-        </Dialog>
+        </Paper>
       </CalendarItemContainer>
     );
   }
@@ -212,9 +192,9 @@ class CalendarItem extends Component {
 
 const CalendarItemContainer = styled.div`
   width: 50.33vw;
-  height: 20.5vw;
+  height: 31vw;
   max-width: 414px;
-  max-height: 510px;
+  max-height: autopx;
   border-top: 1px #bdbdbd solid;
   border-left: 1px #bdbdbd solid;
   display: inline-block;
@@ -241,22 +221,7 @@ const CalendarItemContainer = styled.div`
     font-size: 3vw;
   }
 `;
-const CalendarItemVertical = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 60%;
-  justify-content: space-between;
-`;
 
-const StyledPillbox = styled.p`
-  margin: 5px auto;
-  width: 90%;
-  background-color: navy;
-  color: white;
-  border-radius: 10px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-`;
 //--------------------------------------
 
 const deleteMutation = gql`

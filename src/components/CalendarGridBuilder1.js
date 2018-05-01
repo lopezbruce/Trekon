@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import CalendarItem from './CalendarItem0';
+import CalendarItem from './CalendarItem1';
 import { SlideLeft, SlideRight, FadeIn } from '../utils/AnimationHelpers';
 
 export default class CalendarGridBuilder extends Component {
@@ -190,7 +190,7 @@ export default class CalendarGridBuilder extends Component {
 const CalendarGrid = styled.div`
   position: relative;
   width: 95%;
-  height: 70vh;
+  height: 100%;
   max-width: 1000px;
   margin: 0 auto;
   animation: ${FadeIn} 2s;

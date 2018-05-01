@@ -14,7 +14,7 @@ const muiTheme = getMuiTheme({
   }
 });
 
-const monthNamesFull = [
+/*const monthNamesFull = [
   'January',
   'February',
   'March',
@@ -27,15 +27,13 @@ const monthNamesFull = [
   'October',
   'November',
   'December'
-];
+];*/
 
 const CalendarHeader = props => {
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
       <div className={props.className}>
-        <div className="month-name">
-          {monthNamesFull[props.month]} {props.day} {props.year}
-        </div>
+        <div className="month-name">POS</div>
       </div>
     </MuiThemeProvider>
   );

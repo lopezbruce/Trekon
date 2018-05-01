@@ -3,54 +3,45 @@ import Formsy from 'formsy-react';
 import { RaisedButton } from 'material-ui';
 import { FormsyText } from 'formsy-material-ui/lib';
 import { graphql, gql } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
 
-const addMutation = gql`
-  mutation addTip(
+const updateMutation = gql`
+  mutation updateTip(
+    $id: ID!
     $tipAmount: Float!
     $hoursWorked: Float!
     $year: Int!
     $month: Int!
     $day: Int!
     $notes: String
-    $userId: ID
-    $dayName: String
-    $fullDate: String!
   ) {
-    createTip(
+    updateTip(
+      id: $id
       tipAmount: $tipAmount
       hoursWorked: $hoursWorked
       year: $year
       month: $month
       day: $day
       notes: $notes
-      userId: $userId
-      dayName: $dayName
-      fullDate: $fullDate
     ) {
+      id
       tipAmount
       hoursWorked
       year
       month
       day
       notes
-      dayName
-      fullDate
-      user {
-        id
-      }
     }
   }
 `;
 
-class NewTipInputForm extends React.Component {
+class UpdateTipInputForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       canSubmit: false,
-      tipAmount: '',
-      hoursWorked: '',
-      notes: ''
+      tipAmount: props.tipAmount,
+      hoursWorked: props.hoursWorked,
+      notes: props.notes
     };
   }
 
@@ -62,33 +53,17 @@ class NewTipInputForm extends React.Component {
     this.setState({ canSubmit: false });
   };
 
-  submitForm = () => {
+  submitForm = data => {
     const tipAmount = parseFloat(this.state.tipAmount);
     const hoursWorked = parseFloat(this.state.hoursWorked);
-    const { year, month, day, userId, dayName } = this.props;
-    const { notes } = this.state;
-    const fullDate = `${month}/${day}/${year}`;
+    const { year, month, day, notes, id } = this.props;
 
     this.props
-      .mutate({
-        variables: {
-          tipAmount,
-          hoursWorked,
-          year,
-          month,
-          day,
-          notes,
-          userId,
-          dayName,
-          fullDate
-        }
+      .updateMutation({
+        variables: { id, tipAmount, hoursWorked, year, month, day, notes }
       })
       .then(() => {
-        window.location.reload();
-      })
-      .catch(error => {
-        alert('Sorry, there was an error');
-        console.error(error);
+        //this.props.hideInputForm()
       });
   };
 
@@ -133,6 +108,7 @@ class NewTipInputForm extends React.Component {
     };
 
     const { paperStyle, inputStyle, submitStyle, formStyle } = styles;
+
     return (
       <div style={{ height: '95vh' }}>
         <div style={paperStyle}>
@@ -167,15 +143,6 @@ class NewTipInputForm extends React.Component {
               autoComplete="off"
               style={inputStyle}
             />
-            <FormsyText
-              name="notes"
-              hintText="Notes"
-              floatingLabelText="Any notes for the day?"
-              value={this.state.notes}
-              onChange={this.handleNotesChange}
-              autoComplete="off"
-              style={inputStyle}
-            />
             <div>
               <RaisedButton
                 style={submitStyle}
@@ -197,6 +164,8 @@ class NewTipInputForm extends React.Component {
   }
 }
 
-const FormWithMutation = graphql(addMutation)(NewTipInputForm);
+const FormWithMutation = graphql(updateMutation, { name: 'updateMutation' })(
+  UpdateTipInputForm
+);
 
-export default withRouter(FormWithMutation);
+export default FormWithMutation;

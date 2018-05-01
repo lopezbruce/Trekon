@@ -167,15 +167,6 @@ class NewTipInputForm extends React.Component {
               autoComplete="off"
               style={inputStyle}
             />
-            <FormsyText
-              name="notes"
-              hintText="Notes"
-              floatingLabelText="Any notes for the day?"
-              value={this.state.notes}
-              onChange={this.handleNotesChange}
-              autoComplete="off"
-              style={inputStyle}
-            />
             <div>
               <RaisedButton
                 style={submitStyle}
