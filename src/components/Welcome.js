@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CalendarGridBuilder from './CalendarGridBuilder';
-import CalendarHeader from './CalendarHeader';
+import CalendarGridBuilder from './CalendarGridBuilder0';
+import CalendarHeader from './CalendarHeader0';
 import styled from 'styled-components';
 import { SlideLeft } from '../utils/AnimationHelpers';
 import { DatePicker } from 'material-ui';
@@ -12,6 +12,7 @@ class Welcome extends Component {
     this.state = {
       year: date.getFullYear(),
       month: date.getMonth(),
+      date: date.getDate(),
       dayNames: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'],
       pickerValue: null,
       pickerFocusDate: null,
@@ -28,6 +29,7 @@ class Welcome extends Component {
       pickerValue: date,
       year: date.getFullYear(),
       month: date.getMonth(),
+      date: date.getDate(),
       pickerFocusDate: date.getDate()
     });
   };
@@ -67,6 +69,7 @@ class Welcome extends Component {
     const tipData = this.state.tipData.filter(
       tip => tip.month === this.state.month && tip.year === this.state.year
     );
+
     return (
       <div className={this.props.className}>
         <StyledDiv>
@@ -82,16 +85,12 @@ class Welcome extends Component {
             />
           </HiddenDiv>
           <CalendarHeader
-            handleNext={this.handleNext}
-            handlePrev={this.handlePrev}
             handleOpenDatePicker={this.handleOpenDatePicker}
             year={this.state.year}
             month={this.state.month}
+            day={this.state.date}
           />
         </StyledDiv>
-        <DayNamesContainer>
-          {this.state.dayNames.map(day => <DayNames key={day}>{day}</DayNames>)}
-        </DayNamesContainer>
         <CalendarGridBuilder
           handleNext={this.handleNext}
           handlePrev={this.handlePrev}
@@ -113,7 +112,7 @@ const StyledDiv = styled.div``;
 const HiddenDiv = styled.div`
   visibility: hidden;
 `;
-const DayNamesContainer = styled.div`
+/*const DayNamesContainer = styled.div`
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
@@ -126,7 +125,7 @@ const DayNames = styled.div`
   display: inline-block;
   float: left;
   margin-bottom: 20px;
-`;
+`;*/
 
 export default styled(Welcome)`
   position: relative;
