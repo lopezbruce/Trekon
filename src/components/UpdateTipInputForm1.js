@@ -108,6 +108,7 @@ class UpdateTipInputForm extends React.Component {
     };
 
     const { paperStyle, inputStyle, submitStyle, formStyle } = styles;
+    //TotalAmount = TotalAmount + {this.state.tipAmount};
 
     return (
       <div style={{ height: '95vh' }}>

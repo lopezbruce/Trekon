@@ -3,6 +3,7 @@ import { Paper } from 'material-ui';
 import styled from 'styled-components';
 
 const TipCard = props => {
+  //TotalAmount = TotalAmount + parseFloat({props.tips});
   return (
     <Paper className={props.className}>
       <p>Daily Tips: ${props.tips}</p>

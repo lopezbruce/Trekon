@@ -177,7 +177,10 @@ class CalendarItem extends Component {
                 month={this.props.month}
                 day={this.props.date}
                 id={this.state.tipData.id}
-                tipAmount={this.state.tipData.tipAmount}
+                totalAmount={this.state.tipData.tipAmount}
+                tipAmount={
+                  this.state.tipData.tipAmount + this.state.tipData.tipAmount
+                }
                 hoursWorked={this.state.tipData.hoursWorked}
               />
             </Paper>
