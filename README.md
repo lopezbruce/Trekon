@@ -1,10 +1,12 @@
 # Trekon
 
+Make sure nodeJS is installed
+
 # Starting the Project
 
-git clone
+git clone https://cci-git.uncc.edu/blopez6/ITCS_4155_Project.git
 
-cd Trekon
+cd ITCS_4155_Project
 
 npm install
 
