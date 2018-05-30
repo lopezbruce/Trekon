@@ -62,7 +62,7 @@ class App extends React.Component {
           <Route
             path="/*"
             component={() => (
-              <Welcome
+              <Calendar
                 data={this.props.userQuery}
                 loading={this.props.userQuery.loading}
               />

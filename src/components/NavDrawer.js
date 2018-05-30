@@ -52,14 +52,6 @@ class NavDrawer extends Component {
             this.props.history.push('/');
           }}
         >
-          Today's Statistics
-        </MenuItem>
-        <MenuItem
-          onTouchTap={() => {
-            this.props.handleClose();
-            this.props.history.push('/Calendar');
-          }}
-        >
           Calendar
         </MenuItem>
         <MenuItem
