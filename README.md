@@ -4,9 +4,9 @@ Make sure nodeJS is installed
 
 # Starting the Project
 
-git clone https://cci-git.uncc.edu/blopez6/ITCS_4155_Project.git
+git clone https://github.com/lopezbruce/Trekon.git
 
-cd ITCS_4155_Project
+cd Trekon
 
 npm install
 
